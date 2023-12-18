@@ -315,12 +315,85 @@ double tinhDiemTB(int n, DSSinhVien DSSV) {
 	return tong / n;
 }
 double TinhChenhLech(int n, DSSinhVien DSSV) {
+	double count = 0;
+	for (int i = 0; i < n; i++) {
+		if (DSSV[i].GioiTinh == "nam") {
+			count++;
+		}
 
+	}
+
+	return abs(count-(n-count));
+	
+	
+}
+void thongKe(int &mb,int n, DSSinhVien DSSV, string DSlop[MAX]) {
+	
+	int x = 0;
+	DSlop[0] = DSSV[0].Lop;
+	for (int i = 0; i < n; i++) {
+		if (DSSV[i].Lop != DSlop[x]) {
+			DSlop[x + 1] = DSSV[i].Lop;
+			x++;
+			mb++;
+		}
+	}
+}
+void DemTheoLop(int mb,int n, DSSinhVien DSSV,string DSLop[MAX], int SoSVLop[MAX]) {
+	int count=0;
+	for (int j = 0; j < mb; j++) {
+		for (int i = 0; i < n; i++) {
+			if (DSSV[i].Lop == DSLop[j]){
+				count++;
+			}
+		}
+		SoSVLop[j] = count;
+		count = 0;
+	}
 }
 
 
+void XuatThongKeLop(int n,DSSinhVien DSSV) {
+	string DSlop[MAX];
+	int SoSVLop[MAX];
+	int mb = 1;
+	thongKe(mb,n, DSSV, DSlop);
+	
+	
+	DemTheoLop(mb, n, DSSV, DSlop, SoSVLop);
+	for (int i = 0; i <mb ; i++) {
+		cout << setw(15) << DSlop[i];
+		
+	}
+	cout << endl;
+	for (int i = 0; i < mb; i++) {
+		cout << setw(15) << SoSVLop[i];
+	}
+}
+double TimDTBCaoNhat(int n, DSSinhVien DSSV) {
+	double max=0;
+	for (int i = 0; i < n; i++) {
+		if (DSSV[i].DTB > max) {
+			max = DSSV[i].DTB;
+		}
+	}
+	return max;
+}
 
-
-
-
-
+void XuatThongTinDTB(int n, DSSinhVien DSSV) {
+	int i;
+	for (i = 0; i < n; i++) {
+		if (DSSV[i].DTB == TimDTBCaoNhat(n, DSSV)) {
+			break;
+		}
+	}
+	cout << endl << setiosflags(ios::left)
+		<< setw(20) << "|Ma Sinh Vien "
+		<< setw(25) << "|Ho & Ten lot: "
+		<< setw(15) << "|Ten: "
+		<< setw(15) << "|Lop: "
+		<< setw(20) << "|Gioi Tinh: "
+		<< setw(25) << "|Diem Trung Binh: ";	
+	XuatSV(DSSV[i]);
+	
+}

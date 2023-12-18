@@ -2,7 +2,7 @@
 #include<conio.h>
 #include<string>
 #include<iomanip>
-
+#include<math.h>
 using namespace std;
 
 #include "thuvien.h"

@@ -16,7 +16,7 @@ void xuatMenu() {
 	cout << "\n13.Cho biet chenh lech ve so luong sinh vien nam va nu";
 	cout << "\n14.Thong ke so luong sinh vien cua tung lop";
 	cout << "\n15.Tim va  xuat thong tin cua nhung sinh vien co diem tb cao nhat";
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+	cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 
 }
 
@@ -173,17 +173,28 @@ void xuLiMenu(int so, int& n) {
 	case 13:
 
 		cout << "\n13.Cho biet chenh lech ve so luong sinh vien nam va nu";
+		cout << "\ndanh sach sinh vien";
+		XuatDSSV(n, DSSV);
+		cout << "\nchenh lech ve so luong sinh vien nam nu la: " << TinhChenhLech(n,DSSV);
 		break;
 	
 	case 14:
 
 		cout << "\n14.Thong ke so luong sinh vien cua tung lop";
+		cout << "\ndanh sach sinh vien";
+		XuatDSSV(n, DSSV);
+		cout << "\nBang thong ke so hoc sinh tung lop: \n";
+		XuatThongKeLop(n, DSSV);
+
 		break;
 	
 	case 15:
 
-		cout << "\n15.Tim va  xuat thong tin cua nhung sinh vien co diem tb cao nhat";
-
+		cout << "\n15.Tim va xuat thong tin cua nhung sinh vien co diem tb cao nhat";
+		cout << "\ndanh sach sinh vien";
+		XuatDSSV(n, DSSV);
+		cout << "\nNhung sinh vien co DTB cao nhat la: ";
+		XuatThongTinDTB(n, DSSV);
 		break;
 	}
 }
